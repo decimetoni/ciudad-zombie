@@ -9,7 +9,8 @@ y entender que es lo que hace en cada una de sus partes. */
 
 
 
-// cambio
+
+// TODO ESTO ES NUEVO
 
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
