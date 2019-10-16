@@ -7,6 +7,10 @@ texto COMPLETAR que deben completarse segun lo indique la consigna.
 El objeto Juego contiene mucho codigo. Tomate tu tiempo para leerlo tranquilo
 y entender que es lo que hace en cada una de sus partes. */
 
+
+
+// cambio
+
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
   anchoCanvas: 961,
