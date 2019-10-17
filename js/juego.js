@@ -7,11 +7,6 @@ texto COMPLETAR que deben completarse segun lo indique la consigna.
 El objeto Juego contiene mucho codigo. Tomate tu tiempo para leerlo tranquilo
 y entender que es lo que hace en cada una de sus partes. */
 
-
-
-
-// TODO ESTO ES NUEVO
-
 var Juego = {
   // Aca se configura el tamanio del canvas del juego
   anchoCanvas: 961,
@@ -23,7 +18,11 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
+
+    //   x          y      alto     ancho           potencia
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
     new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
+
 
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
@@ -118,20 +117,30 @@ Juego.capturarMovimiento = function(tecla) {
   // El movimiento esta determinado por la velocidad del jugador
   if (tecla == 'izq') {
     movX = -velocidad;
+    Jugador.sprite = 'imagenes/auto_rojo_izquierda.png';
+    Jugador.ancho = 30;
+    Jugador.alto = 15;
   }
   if (tecla == 'arriba') {
     movY = -velocidad;
+    Jugador.sprite = 'imagenes/auto_rojo_arriba.png';
+    Jugador.ancho = 15;
+    Jugador.alto = 30;
   }
   if (tecla == 'der') {
     movX = velocidad;
+    Jugador.sprite = 'imagenes/auto_rojo_derecha.png';
+    Jugador.ancho = 30;
+    Jugador.alto = 15;
   }
   if (tecla == 'abajo') {
     movY = velocidad;
+    Jugador.sprite = 'imagenes/auto_rojo_abajo.png';
+    Jugador.ancho = 15;
+    Jugador.alto = 30;
   }
 
 
-  
-// Pista: Recordá que por sí mismo no se va a poder mover. Necesita de un objeto que le envíe la instrucción (el mensaje) para moverse, en este caso, será el Juego. El objeto juego sabe cómo capturar las teclas, entonces a partir de allí se debería indicar al jugador como moverse. Esto sucede en el método .capturarMovimiento() del objeto Juego que ya está implementado pero incompleto.
 
 
   // Si se puede mover hacia esa posicion hay que hacer efectivo este movimiento
@@ -160,10 +169,6 @@ Juego.dibujar = function() {
 
   /* Completar */
   Dibujante.dibujarEntidad(Jugador);
-
-
-
-
 
 
 
