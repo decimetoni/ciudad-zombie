@@ -18,12 +18,11 @@ var Juego = {
   obstaculosCarretera: [
     /*Aca se van a agregar los obstaculos visibles. Tenemos una valla horizontal
     de ejemplo, pero podras agregar muchos mas. */
-
-    //   x          y      alto     ancho           potencia
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1),
-    new Obstaculo('imagenes/valla_horizontal.png', 70, 430, 30, 30, 1)
-
-
+    //                                        x  y  alto   ancho   potencia
+    new Obstaculo('imagenes/valla_horizontal.png', 70, 460, 30, 30, 1),
+    new Obstaculo('imagenes/bache.png', 170, 380, 30, 30, 1),
+    new Obstaculo('imagenes/valla_horizontal.png', 140, 380, 30, 30, 1),
+    new Obstaculo('imagenes/valla_vertical.png', 340, 380, 30, 30, 1),
   ],
   /* Estos son los bordes con los que se puede chocar, por ejemplo, la vereda.
    Ya estan ubicados en sus lugares correspondientes. Ya aparecen en el mapa, ya
@@ -46,11 +45,15 @@ var Juego = {
   ],
   // Los enemigos se agregaran en este arreglo.
   enemigos: [
-
+    new ZombieCaminante('imagenes/zombie1.png', 790, 355, 10, 10, 1, {
+    desdeX: 0,
+    hastaX: 961,
+    desdeY: 0,
+    hastaY: 577,
+  })
+  //  sprite, x, y, ancho, alto, velocidad, rangoMov)
   ]
-
 }
-
 /* Se cargan los recursos de las imagenes, para tener un facil acceso
 a ellos. No hace falta comprender esta parte. Pero si queres agregar tus propies
 imagenes tendras que poner su ruta en la lista para que pueda ser precargada como
@@ -141,8 +144,6 @@ Juego.capturarMovimiento = function(tecla) {
   }
 
 
-
-
   // Si se puede mover hacia esa posicion hay que hacer efectivo este movimiento
   if (this.chequearColisiones(movX + this.jugador.x, movY + this.jugador.y)) {
     /* Aca tiene que estar la logica para mover al jugador invocando alguno
@@ -160,16 +161,12 @@ Juego.dibujar = function() {
   //Se pinta la imagen de fondo segun el estado del juego
   this.dibujarFondo();
  
-
-
   /* Aca hay que agregar la logica para poder dibujar al jugador principal
   utilizando al dibujante y los metodos que nos brinda.
   "Dibujante dibuja al jugador" */
 
-
   /* Completar */
   Dibujante.dibujarEntidad(Jugador);
-
 
 
   // Se recorren los obstaculos de la carretera pintandolos
@@ -179,7 +176,7 @@ Juego.dibujar = function() {
 
   // Se recorren los enemigos pintandolos
   this.enemigos.forEach(function(enemigo) {
-    /* Completar */
+    Dibujante.dibujarEntidad(enemigo);
   });
 
   // El dibujante dibuja las vidas del jugador
@@ -191,14 +188,18 @@ Juego.dibujar = function() {
   }
 };
 
-
-
 /* Recorre los enemigos haciendo que se muevan. De la misma forma que hicimos
 un recorrido por los enemigos para dibujarlos en pantalla ahora habra que hacer
 una funcionalidad similar pero para que se muevan.*/
 Juego.moverEnemigos = function() {
-  /* COMPLETAR */
+  this.enemigos.forEach(function(enemigo) {
+enemigo.mover();
+ })
 };
+
+
+
+
 
 /* Recorre los enemigos para ver cual esta colisionando con el jugador
 Si colisiona empieza el ataque el zombie, si no, deja de atacar.
