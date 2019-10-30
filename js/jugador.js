@@ -10,17 +10,18 @@ var Jugador = {
   alto: 30,
   velocidad: 10,
   vidas: 5,
- 
- mover: function (movX, movY){
-   console.log(movX, movY)
-  this.x += movX;
-  this.y += movY;
- },
 
-//perderVida: function (){
-//},
-  
+  mover: function(movX, movY) {
+    console.log(movX, movY);
+    this.x += movX;
+    this.y += movY;
+  },
+  perderVida: function(cantVidas) {
+    console.log('perderdiste ' + cantVidas + ' vidas');
+    this.vidas = this.vidas - cantVidas;
+  },
  
- // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
+  // Hay que agregar lo que falte al jugador: movimientos, perdida de vidas,
   // y todo lo que haga falta para que cumpla con sus responsabilidades
+
 }
